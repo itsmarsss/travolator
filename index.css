@@ -32,16 +32,12 @@ input {
     box-shadow: 0px 0px 20px -18px;
 }
 
-input:hover {
-    border: 2px solid lightgrey;
-    box-shadow: 0px 0px 20px -17px;
-}
-
 input:active {
     transform: scale(0.95);
 }
 
 input:focus {
+    padding: 10px;
     border: 2px solid grey;
 }
 
@@ -102,6 +98,7 @@ nav {
     padding-left: 5%;
     padding-right: 5%;
     transform: translateY(-65px);
+    height: 85px;
 }
 
 #top {
@@ -120,31 +117,37 @@ nav {
     font-weight: bold;
 }
 
-title {
-    display: block;
+.title {
     margin-top: 50px;
     margin-bottom: 10px;
     font-family: "Poppins";
     font-size: 20px;
     font-weight: bold;
+    color: #323232;
+    width: 90%;
+    margin: auto;
+    transform: translateY(-50px);
 }
 
 section {
     width: 90%;
     max-width: 1000px;
     min-width: 200px;
-    padding: 1%;
+    padding: 10px;
     height: 400px;
     background: #fafafa;
     margin: auto;
     border-radius: 25px;
+    border: #000 1px dotted;
     box-shadow: #0000003d 0px 3px 8px;
-    transform: translateY(-65px);
+    transform: translateY(-50px);
 }
 
 #stops {
-    height: 100%;
+    height: calc(100% - 60px);
     overflow-y: auto;
+    border-bottom: #000 1px dashed;
+    margin-bottom: 10px;
 }
 
 .stop {
@@ -161,6 +164,7 @@ section {
 
 .stop:hover {
     box-shadow: none;
+    transform: scale(0.99);
 }
 
 .location {
@@ -272,4 +276,29 @@ section {
 
 .move>button:hover::before {
     transform: translateY(0%);
+}
+
+#manual {
+    padding: 0px 5px;
+    height: 50px;
+    border-radius: 25px;
+    border: #000 1px solid;
+    display: flex;
+    gap: 5px;
+}
+
+#manual>* {
+    margin: auto;
+}
+
+#manual>input {
+    width: 90%;
+    height: 15px;
+    border-radius: 25px;
+}
+
+#manual>button {
+    width: 10%;
+    height: 40px;
+    border-radius: 25px;
 }
