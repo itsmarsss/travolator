@@ -11,6 +11,12 @@ function remove(id) {
 
 function add() {
     const name = escapeHtml(location_input.value);
+
+    if (name.length == 0) {
+        location_input.style.background = "#c4434325";
+        return;
+    }
+
     const addr = "TBD";
 
     location_input.value = "";
