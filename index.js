@@ -227,6 +227,11 @@ function handleIn(element) {
                     });
                 })(i);
             }
+
+            if (!(from_location_input === document.activeElement) && !(to_location_input === document.activeElement) && !(location_input === document.activeElement)) {
+                autocomplete.innerHTML = "";
+                autocomplete.style.display = "none";
+            }
         })
         .catch(error => console.log('error', error));
 }
