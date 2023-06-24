@@ -9,9 +9,17 @@ const location_list = document.getElementById("stops");
 var locations = [];
 
 async function queryAI() {
-    console.log("Calling GPT3")
+    console.log("Calling GPT3");
+
+    location_list.innerHTML = `
+<div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+    <h3 style="font-family: 'Poppins';">Loading...</h3>
+</div>
+    `;
+
     var url = "https://api.openai.com/v1/completions";
-    var bearer = 'Bearer';
+    var bearer = 'Bearer ';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -20,7 +28,7 @@ async function queryAI() {
         },
         body: JSON.stringify({
             "model": "text-davinci-003",
-            "prompt": `Generate real-life places between ${from_location_input.value} and ${to_location_input}, your response must be in JSON format as follows:\n[\n{\n"type": "<insert attraction type: building, landscape, nature>",\n"name": "<insert place name here>",\n"address": "<insert address here>",\n"description": "<insert description here>"\n}... // continue in this list format\n]\nStart now:`,
+            "prompt": `Generate real-life places between ${from_location_input.value} and ${to_location_input}, your response must be in JSON format as follows:\n[\n{\n"type": "<insert attraction type: building, landscape, nature>",\n"name": "<insert place name here>",\n"address": "<insert exact address here>",\n"description": "<insert description here>"\n}... // continue in this list format\n]\nStart now:`,
             "temperature": 0.7,
             "max_tokens": 1000,
             "top_p": 1,
