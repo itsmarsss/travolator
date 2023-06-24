@@ -8,8 +8,67 @@ const location_list = document.getElementById("stops");
 
 var locations = [];
 
-function queryAI() {
+async function queryAI() {
+    console.log("Calling GPT3")
+    var url = "https://api.openai.com/v1/completions";
+    var bearer = 'Bearer ';
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': bearer,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "model": "text-davinci-003",
+            "prompt": `Generate real-life places between ${from_location_input.value} and ${to_location_input}, your response must be in JSON format as follows:\n[\n{\n"type": "<insert attraction type: building, landscape, nature>",\n"name": "<insert place name here>",\n"address": "<insert address here>",\n"description": "<insert description here>"\n}... // continue in this list format\n]\nStart now:`,
+            "temperature": 0.7,
+            "max_tokens": 1000,
+            "top_p": 1,
+            "frequency_penalty": 0,
+            "presence_penalty": 0
+        })
+    }).then(response => response.json())
+        .then(data => {
+            console.log(data.choices[0].text);
 
+            var replyLines = data.choices[0].text;
+
+            var GPTReply = JSON.parse(replyLines);
+
+            for (var i = 0; i < GPTReply.length; i++) {
+
+                const type = GPTReply[i].type || "building";
+                const name = GPTReply[i].name || "N/A";
+                const addr = GPTReply[i].address || "N/A";
+                const desc = GPTReply[i].description || "N/A";
+
+                aiAdd(type, name, addr, desc);
+            }
+
+        })
+        .catch(err => {
+            console.log("OpenAI error: " + err.message.toString());
+        });
+}
+
+function aiAdd(type, name, addr, desc) {
+    const id = "id" + Math.random().toString(16).slice(2);
+
+    const json = {
+        "id": id,
+        "type": type,
+        "name": name,
+        "addr": addr,
+        "method": null,
+        "leave": null,
+        "arrive": null,
+        "time": null,
+        "fees": null
+    };
+
+    locations.push(json);
+
+    rerender();
 }
 
 function updateLeave(src) {
