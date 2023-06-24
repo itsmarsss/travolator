@@ -441,6 +441,16 @@ footer>* {
     font-size: 12px;
 }
 
+#autocomplete {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    background: #e8e8e8;
+    border-radius: 10px;
+    z-index: 2;
+    border: #000 1px solid;
+}
+
 @media only screen and (max-width: 1040px) {
     h1 {
         font-size: 15px;

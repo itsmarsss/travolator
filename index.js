@@ -1,4 +1,9 @@
+const from_location_input = document.getElementById("from");
+const to_location_input = document.getElementById("to");
 const location_input = document.getElementById("new-stop");
+
+const autocomplete = document.getElementById("autocomplete");
+
 const location_list = document.getElementById("stops");
 
 var locations = [];
@@ -135,3 +140,26 @@ function escapeHtml(unsafe) {
 }
 
 rerender();
+
+from_location_input.addEventListener("keydown", function () {
+    console.log(from_location_input.value)
+
+    if (from_location_input.value.length == 0) {
+        return;
+    }
+
+    var requestOptions = {
+        method: 'GET',
+    };
+
+    fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${from_location_input.value}&apiKey=9fdec571bd144a86b3d7c4663ff7b27d`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            autocomplete.style.display = "flex";
+            autocomplete.style.top = from_location_input.getBoundingClientRect().top + from_location_input.offsetHeight + "px";
+            autocomplete.style.left = from_location_input.getBoundingClientRect().left + "px";
+            autocomplete.style.width = from_location_input.offsetWidth + "px";
+        })
+        .catch(error => console.log('error', error));
+});
