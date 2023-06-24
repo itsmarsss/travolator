@@ -36,6 +36,8 @@ async function queryAI() {
 </div>
     `;
 
+    locations = [];
+
     var url = "https://api.openai.com/v1/completions";
     var bearer = 'Bearer';
     fetch(url, {
