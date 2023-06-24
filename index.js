@@ -1,5 +1,6 @@
 const from_location_input = document.getElementById("from");
 const to_location_input = document.getElementById("to");
+const location_name_input = document.getElementById("search_name");
 const location_input = document.getElementById("new-stop");
 
 const autocomplete = document.getElementById("autocomplete");
@@ -141,14 +142,33 @@ function escapeHtml(unsafe) {
 
 rerender();
 
-from_location_input.addEventListener("keydown", function () {
-    handleIn(from_location_input);
+from_location_input.addEventListener("keyup", function (e) {
+    const inputValue = e.key;
+
+    if (/^[a-zA-Z]$/.test(inputValue)) {
+        handleIn(from_location_input);
+    }
 });
-to_location_input.addEventListener("keydown", function () {
-    handleIn(to_location_input);
+to_location_input.addEventListener("keyup", function (e) {
+    const inputValue = e.key;
+
+    if (/^[a-zA-Z]$/.test(inputValue)) {
+        handleIn(to_location_input);
+    }
 });
-location_input.addEventListener("keydown", function () {
-    handleIn(location_input);
+location_input.addEventListener("keyup", function (e) {
+    const inputValue = e.key;
+
+    if (/^[a-zA-Z]$/.test(inputValue)) {
+        handleIn(location_input);
+    }
+});
+location_name_input.addEventListener("keyup", function (e) {
+    const inputValue = e.key;
+
+    if (/^[a-zA-Z]$/.test(inputValue)) {
+        handleIn(location_input);
+    }
 });
 
 from_location_input.addEventListener("focusout", function () {
@@ -162,8 +182,7 @@ location_input.addEventListener("focusout", function () {
 });
 
 function handleIn(element) {
-    console.log("called");
-    console.log(element.value);
+    console.log("Fetching");
 
     if (element.value.length == 0) {
         return;
