@@ -59,6 +59,7 @@ function aiAdd(type, name, addr, desc) {
         "type": type,
         "name": name,
         "addr": addr,
+        "desc": desc,
         "method": null,
         "leave": null,
         "arrive": null,
@@ -210,8 +211,10 @@ function add() {
 
     const json = {
         "id": id,
+        "type": "building",
         "name": name,
         "addr": addr,
+        "desc": "Added by you!",
         "method": null,
         "leave": null,
         "arrive": null,
@@ -240,6 +243,7 @@ function rerender() {
 
     locations.forEach(function (location, index) {
         const id = location.id;
+        const type = location.type || "building";
         const name = location.name || "N/A";
         const addr = location.addr || "N/A";
 
@@ -250,10 +254,18 @@ function rerender() {
         const time = location.time || "XX:XX";
         const fees = location.fees || "$XX.XX";
 
+        var attraction_type = `<i class="fa-solid fa-building"></i>`;
+
+        if (type === "landscape") {
+            attraction_type = `<i class="fa-solid fa-image-landscape"></i>`;
+        } else if (type === "nature") {
+            attraction_type = `<i class="fa-solid fa-trees"></i>`;
+        }
+
         var insert = `
 <div class="stop">
     <div class="location">
-        <h4 class="name">${name}</h4>
+        <h4 class="name">${attraction_type}&emsp;${name}</h4>
         <h4 class="addr">${addr}</h4>
     </div>
     <div class="editor">
