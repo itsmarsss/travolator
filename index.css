@@ -316,6 +316,10 @@ section {
     gap: 10px;
 }
 
+.point {
+    transition: 200ms;
+}
+
 .infos {
     display: flex;
     gap: 5px;
@@ -392,4 +396,79 @@ footer>* {
     display: flex;
     gap: 20px;
     font-size: 12px;
+}
+
+@media only screen and (max-width: 800px) {
+    h1 {
+        font-size: 15px;
+    }
+
+    input {
+        font-size: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    nav {
+        transform: translateY(-45px);
+    }
+
+    .method {
+        height: 75px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .choices>* {
+        width: 9.99%;
+        text-align: center;
+    }
+
+    .choices>.vr {
+        width: 1px;
+    }
+
+    .point {
+        transform: rotate(90deg);
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    header {
+        aspect-ratio: 7 / 4;
+    }
+
+    nav {
+        transform: translateY(-210px);
+    }
+
+    #top {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-section {
+        width: 100%;
+    }
+
+    .nav-section:nth-child(odd) {
+        height: 70px;
+    }
+
+    .nav-section:nth-child(even) {
+        height: 35px;
+    }
+
+    .location {
+        flex-direction: column;
+    }
+
+    .location>* {
+        margin-left: 10px;
+        margin-right: 0;
+        width: 95%;
+    }
 }
