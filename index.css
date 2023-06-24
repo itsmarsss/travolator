@@ -456,11 +456,13 @@ footer>* {
     overflow: hidden;
     white-space: nowrap;
     padding: 5px;
+    transition: 200ms;
 }
 
 #autocomplete>span:hover {
     background: #ddd;
     cursor: pointer;
+    padding-left: 10px;
 }
 
 @media only screen and (max-width: 1040px) {

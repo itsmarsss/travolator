@@ -151,6 +151,16 @@ location_input.addEventListener("keydown", function () {
     handleIn(location_input);
 });
 
+from_location_input.addEventListener("focusout", function () {
+    hideComplete();
+});
+to_location_input.addEventListener("focusout", function () {
+    hideComplete();
+});
+location_input.addEventListener("focusout", function () {
+    hideComplete();
+});
+
 function handleIn(element) {
     console.log("called");
     console.log(element.value);
@@ -198,4 +208,11 @@ function handleIn(element) {
             }
         })
         .catch(error => console.log('error', error));
+}
+
+function hideComplete() {
+    setTimeout(function () {
+        autocomplete.innerHTML = "";
+        autocomplete.style.display = "none";
+    }, 300);
 }
