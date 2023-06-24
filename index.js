@@ -34,6 +34,15 @@ function add() {
     rerender();
 }
 
+function selectMethod(id, index) {
+    for (var i = 0; i < locations.length; i++) {
+        if (locations[i].id === id) {
+            locations[i].method = index;
+            break;
+        }
+    }
+}
+
 function rerender() {
     location_list.innerHTML = "";
 
@@ -42,6 +51,7 @@ function rerender() {
         const name = location.name || "N/A";
         const addr = location.addr || "N/A";
 
+        const method = location.method || -1;
 
         const leave = location.leave || "XX:XX";
         const arrive = location.arrive || "XX:XX";
@@ -68,27 +78,27 @@ function rerender() {
             insert = `
 <div class="method">
     <div class="choices">
-        <i class="fas fa-walking"></i>
-        <i class="fa-solid fa-bicycle"></i>
-        <i class="fa-solid fa-car"></i>
-        <i class="fa-solid fa-bus"></i>
-        <i class="fa-solid fa-train"></i>
-        <i class="fa-solid fa-ferry"></i>
-        <i class="fa-solid fa-plane"></i>
+        <i class="fas fa-walking ${(method == 0 ? "active" : "")}" onclick="selectMethod('${id}', 0)"></i>
+        <i class="fa-solid fa-bicycle ${(method == 1 ? "active" : "")}" onclick="selectMethod('${id}', 1)"></i>
+        <i class="fa-solid fa-car ${(method == 2 ? "active" : "")}" onclick="selectMethod('${id}', 2)"></i>
+        <i class="fa-solid fa-bus ${(method == 3 ? "active" : "")}" onclick="selectMethod('${id}', 3)"></i>
+        <i class="fa-solid fa-train ${(method == 4 ? "active" : "")}" onclick="selectMethod('${id}', 4)"></i>
+        <i class="fa-solid fa-ferry ${(method == 5 ? "active" : "")}" onclick="selectMethod('${id}', 5)"></i>
+        <i class="fa-solid fa-plane ${(method == 6 ? "active" : "")}" onclick="selectMethod('${id}', 6)"></i>
         <div class="vr"></div>
-        <i class="fa-brands fa-uber"></i>
-        <i class="fa-brands fa-lyft"></i>
+        <i class="fa-brands fa-uber ${(method == 7 ? "active" : "")}" onclick="selectMethod('${id}', 7)"></i>
+        <i class="fa-brands fa-lyft ${(method == 8 ? "active" : "")}" onclick="selectMethod('${id}', 8)"></i>
         <span class="point">&rarr;</span>
 
     </div>
     <div class="infos">
-        <span class="info"><span class="main-info">Leave:</span> XX:XX</span>
+        <span class="info"><span class="main-info">Leave:</span> ${leave}</span>
         <div class="vr"></div>
-        <span class="info"><span class="main-info">Arrive:</span> XX:XX</span>
+        <span class="info"><span class="main-info">Arrive:</span> ${arrive}</span>
         <div class="vr"></div>
-        <span class="info"><span class="main-info">Time:</span> XX:XX</span>
+        <span class="info"><span class="main-info">Time:</span> ${time}</span>
         <div class="vr"></div>
-        <span class="info"><span class="main-info">Fee:</span> $XX.XX</span>
+        <span class="info"><span class="main-info">Fees:</span> ${fees}</span>
     </div>
 </div>
         ` + insert;
