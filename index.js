@@ -9,6 +9,24 @@ const location_list = document.getElementById("stops");
 var locations = [];
 
 async function queryAI() {
+
+    const parsed_from = from_location_input.value.split(/,(.*)/s);
+    const parsed_to = to_location_input.value.split(/,(.*)/s);
+
+    if (parsed_from.length <= 2) {
+        from_location_input.style.background = "#fa7d7d";
+        return;
+    }
+    if (parsed_to.length <= 2) {
+        to_location_input.style.background = "#fa7d7d";
+        return;
+    }
+
+    var from_name = parsed_from[0];
+    var from_addr = parsed_from[1];
+
+    aiAdd("building", from_name, from_addr, "Added by you!");
+
     console.log("Calling GPT3");
 
     location_list.innerHTML = `
@@ -19,7 +37,7 @@ async function queryAI() {
     `;
 
     var url = "https://api.openai.com/v1/completions";
-    var bearer = 'Bearer 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';
+    var bearer = 'Bearer ';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -52,6 +70,11 @@ async function queryAI() {
 
                 aiAdd(type, name, addr, desc);
             }
+
+            var to_name = parsed_to[0];
+            var to_addr = parsed_to[1];
+
+            aiAdd("building", to_name, to_addr, "Added by you!");
 
         })
         .catch(err => {
