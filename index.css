@@ -32,6 +32,13 @@ a:hover {
     font-weight: bold;
 }
 
+.vr {
+    display: flex;
+    height: 100%;
+    width: 1px;
+    border-left: 2px #ccc solid;
+}
+
 input {
     font-family: "Poppins";
     width: 80%;
@@ -287,6 +294,55 @@ section {
 
 .move>button:hover::before {
     transform: translateY(0%);
+}
+
+.method {
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border: #000 1px dashed;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: 200ms;
+}
+
+.method:hover {
+    background: #fefefe;
+}
+
+.choices {
+    display: flex;
+    gap: 10px;
+}
+
+.infos {
+    display: flex;
+    gap: 5px;
+}
+
+.info {
+    font-family: "Poppins";
+    font-size: 13px;
+    margin: auto;
+}
+
+.info>.main-info {
+    font-weight: bold;
+}
+
+i {
+    font-size: 20px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+i:hover {
+    transform: translateY(-5px);
+}
+
+i:active {
+    transform: translateY(-2px);
 }
 
 #manual {
