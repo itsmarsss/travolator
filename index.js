@@ -8,6 +8,32 @@ const location_list = document.getElementById("stops");
 
 var locations = [];
 
+function moveUp(id) {
+    const index = getIndex(id);
+    array_move(locations, index, Math.max(0, index - 1));
+
+    console.log(locations)
+
+    rerender();
+}
+
+function moveDown(id) {
+    const index = getIndex(id);
+    array_move(locations, index, Math.min(locations.length - 1, index + 1));
+
+    console.log(locations)
+
+    rerender();
+}
+
+function getIndex(id) {
+    for (var i = 0; i < locations.length; i++) {
+        if (locations[i].id === id) {
+            return i;
+        }
+    }
+}
+
 function remove(id) {
     locations = locations.filter(location => location.id !== id);
 
@@ -87,8 +113,8 @@ function rerender() {
     </div>
     <div class="editor">
         <div class="move">
-            <button>&uarr;</button>
-            <button>&darr;</button>
+            <button onclick="moveUp('${id}')">&uarr;</button>
+            <button onclick="moveDown('${id}')">&darr;</button>
         </div>
         <button onclick="remove('${id}')">&times;</button>
     </div>
@@ -242,3 +268,14 @@ function hideComplete() {
         autocomplete.style.display = "none";
     }, 300);
 }
+
+function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
+};
