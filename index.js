@@ -144,6 +144,12 @@ rerender();
 from_location_input.addEventListener("keydown", function () {
     handleIn(from_location_input);
 });
+to_location_input.addEventListener("keydown", function () {
+    handleIn(to_location_input);
+});
+location_input.addEventListener("keydown", function () {
+    handleIn(location_input);
+});
 
 function handleIn(element) {
     console.log("called");
@@ -185,6 +191,8 @@ function handleIn(element) {
                 (function (index) {
                     spans[index].addEventListener("click", function () {
                         element.value = spans[index].getAttribute("data-addr");
+                        autocomplete.innerHTML = "";
+                        autocomplete.style.display = "none";
                     });
                 })(i);
             }
