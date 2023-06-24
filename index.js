@@ -14,11 +14,11 @@ async function queryAI() {
     const parsed_to = to_location_input.value.split(/,(.*)/s);
 
     if (parsed_from.length <= 2) {
-        from_location_input.style.background = "#fa7d7d";
+        from_location_input.style.background = "#f4d7d7";
         return;
     }
     if (parsed_to.length <= 2) {
-        to_location_input.style.background = "#fa7d7d";
+        to_location_input.style.background = "#f4d7d7";
         return;
     }
 
@@ -37,7 +37,7 @@ async function queryAI() {
     `;
 
     var url = "https://api.openai.com/v1/completions";
-    var bearer = 'Bearer ';
+    var bearer = 'Bearer';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -321,6 +321,8 @@ function rerender() {
         const name = location.name || "N/A";
         const addr = location.addr || "N/A";
 
+        const desc = location.desc || "Added by you!";
+
         const method = location.method;
 
         const leave = location.leave || "XX:XX";
@@ -337,7 +339,7 @@ function rerender() {
         }
 
         var insert = `
-<div class="stop">
+<div class="stop" title="${desc}">
     <div class="location">
         <h4 class="name">${attraction_type}&emsp;${name}</h4>
         <h4 class="addr">${addr}</h4>

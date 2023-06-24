@@ -75,6 +75,7 @@ button {
     font-size: 15px;
     transition: 250ms;
     overflow: hidden;
+    cursor: pointer;
 }
 
 button::before {
@@ -513,7 +514,7 @@ footer>* {
 
 @media only screen and (max-width: 560px) {
     header {
-        aspect-ratio: 5 / 2;
+        aspect-ratio: 5 / 3;
     }
 
     nav {
