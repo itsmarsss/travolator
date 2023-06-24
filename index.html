@@ -31,63 +31,11 @@
     <h1 class="title">PLANNED STOPS...</h1>
     <section>
         <div id="stops">
-            <div class="stop">
-                <div class="location">
-                    <h4 class="name">Louvre</h4>
-                    <h4 class="addr">75001 Paris, France</h4>
-                </div>
-                <div class="editor">
-                    <div class="move">
-                        <button>&uarr;</button>
-                        <button>&darr;</button>
-                    </div>
-                    <button>&times;</button>
-                </div>
-            </div>
-
-            <div class="method">
-                <div class="choices">
-                    <i class="fas fa-walking"></i>
-                    <i class="fa-solid fa-bicycle"></i>
-                    <i class="fa-solid fa-car"></i>
-                    <i class="fa-solid fa-bus"></i>
-                    <i class="fa-solid fa-train"></i>
-                    <i class="fa-solid fa-ferry"></i>
-                    <i class="fa-solid fa-plane"></i>
-                    <div class="vr"></div>
-                    <i class="fa-brands fa-uber"></i>
-                    <i class="fa-brands fa-lyft"></i>
-                    <span class="point">&rarr;</span>
-
-                </div>
-                <div class="infos">
-                    <span class="info"><span class="main-info">Leave:</span> XX:XX</span>
-                    <div class="vr"></div>
-                    <span class="info"><span class="main-info">Arrive:</span> XX:XX</span>
-                    <div class="vr"></div>
-                    <span class="info"><span class="main-info">Time:</span> XX:XX</span>
-                    <div class="vr"></div>
-                    <span class="info"><span class="main-info">Fee:</span> $XX.XX</span>
-                </div>
-            </div>
-
-            <div class="stop">
-                <div class="location">
-                    <h4 class="name">Eiffel Tower</h4>
-                    <h4 class="addr">Champ de Mars, 5 Av. Anatole France, 75007 Paris, France</h4>
-                </div>
-                <div class="editor">
-                    <div class="move">
-                        <button>&uarr;</button>
-                        <button>&darr;</button>
-                    </div>
-                    <button>&times;</button>
-                </div>
-            </div>
+            <!-- Stops Here -->
         </div>
         <div id="manual">
             <input id="new-stop" placeholder="Add new location..." type="text">
-            <button>&plus;</button>
+            <button onclick="add()">&plus;</button>
         </div>
     </section>
     <footer>
