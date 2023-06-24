@@ -295,10 +295,11 @@ section {
 }
 
 .method {
-    height: 20px;
+    height: 75px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     border: #000 1px dashed;
     padding: 10px;
     margin-bottom: 10px;
@@ -314,6 +315,15 @@ section {
     gap: 10px;
 }
 
+.choices>* {
+    width: 9.99%;
+    text-align: center;
+}
+
+.choices>.vr {
+    width: 1px;
+}
+
 .point {
     transition: 200ms;
 }
@@ -321,6 +331,19 @@ section {
 .infos {
     display: flex;
     gap: 5px;
+}
+
+.time,
+.trip-info {
+    display: flex;
+}
+
+.time {
+    width: 55%;
+}
+
+.trip-info {
+    width: 45%;
 }
 
 .info {
@@ -331,6 +354,21 @@ section {
 
 .info>.main-info {
     font-weight: bold;
+}
+
+.date-input,
+.info-input {
+    height: 0px;
+    padding: 10px;
+    font-size: 10px;
+}
+
+.date-input {
+    width: 135px;
+}
+
+.info-input {
+    width: 90px;
 }
 
 i {
@@ -403,7 +441,7 @@ footer>* {
     font-size: 12px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1040px) {
     h1 {
         font-size: 15px;
     }
@@ -420,33 +458,40 @@ footer>* {
         transform: translateY(-45px);
     }
 
-    .method {
-        height: 75px;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .choices>* {
-        width: 9.99%;
-        text-align: center;
-    }
-
-    .choices>.vr {
-        width: 1px;
-    }
-
     .point {
         transform: rotate(90deg);
     }
 }
 
+@media only screen and (max-width: 860px) {
+    .method {
+        height: 100px;
+    }
+
+    .infos {
+        flex-direction: column;
+    }
+
+    .info {
+        width: 50%;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    .time,
+    .trip-info {
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 560px) {
     header {
-        aspect-ratio: 3 / 2;
+        aspect-ratio: 5 / 2;
     }
 
     nav {
-        transform: translateY(-230px);
+        transform: translateY(-215px);
     }
 
     #top {
@@ -475,5 +520,15 @@ footer>* {
         margin-left: 10px;
         margin-right: 0;
         width: 95%;
+    }
+
+    .method {
+        height: 150px;
+    }
+
+    .time,
+    .trip-info {
+        flex-direction: column;
+        gap: 5px;
     }
 }

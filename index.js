@@ -100,13 +100,14 @@ function rerender() {
 
     </div>
     <div class="infos">
-        <span class="info"><span class="main-info">Leave:</span> ${leave}</span>
-        <div class="vr"></div>
-        <span class="info"><span class="main-info">Arrive:</span> ${arrive}</span>
-        <div class="vr"></div>
-        <span class="info"><span class="main-info">Time:</span> ${time}</span>
-        <div class="vr"></div>
-        <span class="info"><span class="main-info">Fees:</span> ${fees}</span>
+        <div class="time">
+            <span class="info"><span class="main-info">Leave:</span> <input type="datetime-local" class="date-input"></span>
+            <span class="info"><span class="main-info">Arrive:</span> <input type="datetime-local" class="date-input"></span>
+        </div>
+        <div class="trip-info">
+            <span class="info"><span class="main-info">Time:</span> <input type="time" class="info-input"></span>
+            <span class="info"><span class="main-info">Fees:</span> <input type="number" min="0.00" max="10000.00" step="0.01" class="info-input"></span>
+        </div>
     </div>
 </div>
         ` + insert;
