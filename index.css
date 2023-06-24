@@ -2,7 +2,6 @@
 
 html {
     width: 100%;
-    height: 100%;
     background: #fcfcfc;
 }
 
@@ -18,6 +17,19 @@ h1 {
     font-family: "Poppins";
     color: #fcfcfc;
     margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a:hover {
+    font-weight: bold;
 }
 
 input {
@@ -89,7 +101,7 @@ body {
 }
 
 header {
-    aspect-ratio: 5 / 1;
+    aspect-ratio: 7 / 1;
 }
 
 nav {
@@ -301,4 +313,28 @@ section {
     width: 10%;
     height: 40px;
     border-radius: 25px;
+}
+
+footer {
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    background: #e8e8e8;
+}
+
+footer>* {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins";
+    font-size: 13px;
+}
+
+#info {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
 }
