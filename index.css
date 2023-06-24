@@ -124,9 +124,8 @@ nav {
     gap: 5px
 }
 
-#wego {
-    margin: auto;
-    font-weight: bold;
+.nav-section:last-child>* {
+    align-self: end;
 }
 
 .title {
