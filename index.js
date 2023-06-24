@@ -11,7 +11,7 @@ var locations = [];
 async function queryAI() {
     console.log("Calling GPT3")
     var url = "https://api.openai.com/v1/completions";
-    var bearer = 'Bearer ';
+    var bearer = 'Bearer';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -47,7 +47,7 @@ async function queryAI() {
 
         })
         .catch(err => {
-            console.log("OpenAI error: " + err.message.toString());
+            console.error("Error: " + err.message.toString());
         });
 }
 
@@ -256,10 +256,10 @@ function rerender() {
 
         var attraction_type = `<i class="fa-solid fa-building"></i>`;
 
-        if (type === "landscape") {
-            attraction_type = `<i class="fa-solid fa-image-landscape"></i>`;
-        } else if (type === "nature") {
-            attraction_type = `<i class="fa-solid fa-trees"></i>`;
+        if (String(type).toLowerCase() === "landscape") {
+            attraction_type = `<i class="fa-solid fa-image"></i>`;
+        } else if (String(type).toLowerCase() === "nature") {
+            attraction_type = `<i class="fa-solid fa-tree"></i>`;
         }
 
         var insert = `
