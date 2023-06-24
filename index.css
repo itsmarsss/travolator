@@ -136,13 +136,11 @@ nav {
 }
 
 .title {
-    margin-top: 50px;
-    margin-bottom: 10px;
+    width: 85%;
     font-family: "Poppins";
     font-size: 20px;
     font-weight: bold;
     color: #323232;
-    width: 90%;
     margin: auto;
     transform: translateY(-50px);
 }
@@ -437,11 +435,11 @@ footer>* {
 
 @media only screen and (max-width: 560px) {
     header {
-        aspect-ratio: 7 / 4;
+        aspect-ratio: 3 / 2;
     }
 
     nav {
-        transform: translateY(-210px);
+        transform: translateY(-230px);
     }
 
     #top {
