@@ -142,9 +142,14 @@ function escapeHtml(unsafe) {
 rerender();
 
 from_location_input.addEventListener("keydown", function () {
-    console.log(from_location_input.value)
+    handleIn(from_location_input);
+});
 
-    if (from_location_input.value.length == 0) {
+function handleIn(element) {
+    console.log("called");
+    console.log(element.value);
+
+    if (element.value.length == 0) {
         return;
     }
 
@@ -152,14 +157,37 @@ from_location_input.addEventListener("keydown", function () {
         method: 'GET',
     };
 
-    fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${from_location_input.value}&apiKey=9fdec571bd144a86b3d7c4663ff7b27d`, requestOptions)
+    fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${element.value}&apiKey=9fdec571bd144a86b3d7c4663ff7b27d`, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);
             autocomplete.style.display = "flex";
-            autocomplete.style.top = from_location_input.getBoundingClientRect().top + from_location_input.offsetHeight + "px";
-            autocomplete.style.left = from_location_input.getBoundingClientRect().left + "px";
-            autocomplete.style.width = from_location_input.offsetWidth + "px";
+            autocomplete.style.top = element.getBoundingClientRect().top + element.offsetHeight + 5 + "px";
+            autocomplete.style.left = element.getBoundingClientRect().left + "px";
+            autocomplete.style.width = element.offsetWidth + "px";
+
+            autocomplete.innerHTML = "";
+
+            for (var i = 0; i < result.features.length; i++) {
+
+                console.log(result.features[i]);
+
+                const insert = `
+                <span data-addr="${result.features[i].properties.address_line2}" class="complete"><b>${result.features[i].properties.address_line1}</b>, ${result.features[i].properties.address_line2}</span>
+                `;
+
+                autocomplete.innerHTML += insert;
+            }
+
+            const spans = document.getElementsByClassName("complete");
+
+            for (var i = 0; i < spans.length; i++) {
+                (function (index) {
+                    spans[index].addEventListener("click", function () {
+                        element.value = spans[index].getAttribute("data-addr");
+                    });
+                })(i);
+            }
         })
         .catch(error => console.log('error', error));
-});
+}
