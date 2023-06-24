@@ -15,14 +15,22 @@ function remove(id) {
 }
 
 function add() {
-    const name = escapeHtml(location_input.value);
+    const parsed = location_input.value.split(/,(.*)/s);
+
+    var name;
+    var addr;
+    if (parsed.length > 2) {
+        name = parsed[0];
+        addr = parsed[1];
+    } else {
+        location_input.style.background = "#c4434325";
+        return;
+    }
 
     if (name.length == 0) {
         location_input.style.background = "#c4434325";
         return;
     }
-
-    const addr = "TBD";
 
     location_input.value = "";
 
@@ -179,6 +187,8 @@ function handleIn(element) {
     if (element.value.length == 0) {
         return;
     }
+
+    element.style.background = "#fff";
 
     var requestOptions = {
         method: 'GET',
