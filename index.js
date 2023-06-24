@@ -8,20 +8,107 @@ const location_list = document.getElementById("stops");
 
 var locations = [];
 
+function queryAI() {
+
+}
+
+function updateLeave(src) {
+    const source = src;
+    const index = getIndex(source.getAttribute("data-id"));
+
+    locations[index].leave = source.value;
+}
+function updateArrive(src) {
+    const source = src;
+    const index = getIndex(source.getAttribute("data-id"));
+
+    locations[index].arrive = source.value;
+}
+function updateTime(src) {
+    const source = src;
+    const index = getIndex(source.getAttribute("data-id"));
+
+    locations[index].time = source.value;
+}
+function updateFees(src) {
+    const source = src;
+    const index = getIndex(source.getAttribute("data-id"));
+
+    locations[index].fees = source.value;
+}
+
 function moveUp(id) {
     const index = getIndex(id);
+
+    try {
+        locations[index].method = null;
+        locations[index].leave = null;
+        locations[index].arrive = null;
+        locations[index].time = null;
+        locations[index].fees = null;
+    }
+    catch (err) {
+    }
+
+    try {
+        locations[index - 1].method = null;
+        locations[index - 1].leave = null;
+        locations[index - 1].arrive = null;
+        locations[index - 1].time = null;
+        locations[index - 1].fees = null;
+    }
+    catch (err) {
+    }
+
     array_move(locations, index, Math.max(0, index - 1));
 
-    console.log(locations)
+    try {
+        locations[index - 2].method = null;
+        locations[index - 2].leave = null;
+        locations[index - 2].arrive = null;
+        locations[index - 2].time = null;
+        locations[index - 2].fees = null;
+    }
+    catch (err) {
+    }
 
     rerender();
 }
 
 function moveDown(id) {
     const index = getIndex(id);
+
+    try {
+        locations[index].method = null;
+        locations[index].leave = null;
+        locations[index].arrive = null;
+        locations[index].time = null;
+        locations[index].fees = null;
+    }
+    catch (err) {
+    }
+
+    try {
+        locations[index - 1].method = null;
+        locations[index - 1].leave = null;
+        locations[index - 1].arrive = null;
+        locations[index - 1].time = null;
+        locations[index - 1].fees = null;
+    }
+    catch (err) {
+    }
+
     array_move(locations, index, Math.min(locations.length - 1, index + 1));
 
-    console.log(locations)
+    try {
+        locations[index].method = null;
+        locations[index].leave = null;
+        locations[index].arrive = null;
+        locations[index].time = null;
+        locations[index].fees = null;
+    }
+    catch (err) {
+    }
 
     rerender();
 }
@@ -66,7 +153,6 @@ function add() {
         "id": id,
         "name": name,
         "addr": addr,
-        "next": null,
         "method": null,
         "leave": null,
         "arrive": null,
@@ -121,8 +207,8 @@ function rerender() {
 </div>
         `;
 
-        if (index > 0) {
-            insert = `
+        if ((locations.length > 1) && (index != locations.length - 1)) {
+            insert = insert + `
 <div class="method">
     <div class="choices">
         <i class="fas fa-walking ${(method == 0 ? "active" : "")}" onclick="selectMethod('${id}', 0)"></i>
@@ -140,16 +226,16 @@ function rerender() {
     </div>
     <div class="infos">
         <div class="time">
-            <span class="info"><span class="main-info">Leave:</span> <input type="datetime-local" class="date-input"></span>
-            <span class="info"><span class="main-info">Arrive:</span> <input type="datetime-local" class="date-input"></span>
+            <span class="info"><span class="main-info">Leave:</span> <input data-id="${id}" type="datetime-local" class="date-input" value="${leave}" oninput="updateLeave(this)"></span>
+            <span class="info"><span class="main-info">Arrive:</span> <input data-id="${id}" type="datetime-local" class="date-input" value="${arrive}" oninput="updateArrive(this)"></span>
         </div>
         <div class="trip-info">
-            <span class="info"><span class="main-info">Time:</span> <input type="time" class="info-input"></span>
-            <span class="info"><span class="main-info">Fees:</span> <input type="number" min="0.00" max="10000.00" step="0.01" class="info-input"></span>
+            <span class="info"><span class="main-info">Time:</span> <input data-id="${id}" type="time" class="info-input" value="${time}" oninput="updateTime(this)"></span>
+            <span class="info"><span class="main-info">Fees:</span> <input data-id="${id}" type="number" min="0.00" max="10000.00" step="0.01" class="info-input" value="${fees}" oninput="updateFees(this)"></span>
         </div>
     </div>
 </div>
-        ` + insert;
+        `;
         }
 
         location_list.innerHTML += insert;
