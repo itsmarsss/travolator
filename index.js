@@ -36,11 +36,13 @@ function add() {
 
 function selectMethod(id, index) {
     for (var i = 0; i < locations.length; i++) {
-        if (locations[i].id === id) {
+        if (locations[i].id == id) {
             locations[i].method = index;
             break;
         }
     }
+
+    rerender();
 }
 
 function rerender() {
@@ -51,7 +53,7 @@ function rerender() {
         const name = location.name || "N/A";
         const addr = location.addr || "N/A";
 
-        const method = location.method || -1;
+        const method = location.method;
 
         const leave = location.leave || "XX:XX";
         const arrive = location.arrive || "XX:XX";
