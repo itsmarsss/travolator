@@ -19,7 +19,7 @@ async function queryAI() {
     `;
 
     var url = "https://api.openai.com/v1/completions";
-    var bearer = 'Bearer ';
+    var bearer = 'Bearer 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';
     fetch(url, {
         method: 'POST',
         headers: {
@@ -28,7 +28,7 @@ async function queryAI() {
         },
         body: JSON.stringify({
             "model": "text-davinci-003",
-            "prompt": `Generate real-life places between ${from_location_input.value} and ${to_location_input}, your response must be in JSON format as follows:\n[\n{\n"type": "<insert attraction type: building, landscape, nature>",\n"name": "<insert place name here>",\n"address": "<insert exact address here>",\n"description": "<insert description here>"\n}... // continue in this list format\n]\nStart now:`,
+            "prompt": `Generate real-life places between ${from_location_input.value} and ${to_location_input.value}, your response must be in JSON format as follows:\n[\n{\n"type": "<insert attraction type: building, landscape, nature>",\n"name": "<insert place name here>",\n"address": "<insert exact address here>",\n"description": "<insert description here>"\n}... // continue in this list format\n]\nStart now:`,
             "temperature": 0.7,
             "max_tokens": 1000,
             "top_p": 1,
@@ -56,6 +56,11 @@ async function queryAI() {
         })
         .catch(err => {
             console.error("Error: " + err.message.toString());
+            location_list.innerHTML = `
+<h1 style="color: #212121; text-align: center">
+        Ran into an error; try again later.
+</h1>
+            `;
         });
 }
 
@@ -236,12 +241,50 @@ function add() {
 }
 
 function selectMethod(id, index) {
-    for (var i = 0; i < locations.length; i++) {
-        if (locations[i].id == id) {
-            locations[i].method = index;
+    const idx = getIndex(id);
+
+    locations[idx].method = index;
+
+    const origin = locations[idx].addr.replace(/[\/\\]/g, '');
+    const destin = locations[idx + 1].addr.replace(/[\/\\]/g, '');
+
+    var travelmode = "driving";
+    switch (locations[idx].method) {
+        case 0:
+            travelmode = "walking";
             break;
-        }
+        case 1:
+            travelmode = "bicycling";
+            break;
+        case 2:
+            travelmode = "driving";
+            break;
+        case 3:
+            travelmode = "transit";
+            break;
+        case 4:
+            travelmode = "flights";
+
+            window.open(
+                `https://www.google.com/maps/dir/${origin}/${destin}`,
+                "_blank");
+            return;
+        case 5:
+            window.open(
+                `https://m.uber.com/looking`,
+                "_blank");
+            return;
+        case 6:
+            window.open(
+                `https://ride.lyft.com/`,
+                "_blank");
+            return;
+
     }
+
+    window.open(
+        `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destin}&travelmode=${travelmode}`,
+        "_blank");
 
     rerender();
 }
@@ -293,13 +336,11 @@ function rerender() {
         <i class="fas fa-walking ${(method == 0 ? "active" : "")}" onclick="selectMethod('${id}', 0)"></i>
         <i class="fa-solid fa-bicycle ${(method == 1 ? "active" : "")}" onclick="selectMethod('${id}', 1)"></i>
         <i class="fa-solid fa-car ${(method == 2 ? "active" : "")}" onclick="selectMethod('${id}', 2)"></i>
-        <i class="fa-solid fa-bus ${(method == 3 ? "active" : "")}" onclick="selectMethod('${id}', 3)"></i>
-        <i class="fa-solid fa-train ${(method == 4 ? "active" : "")}" onclick="selectMethod('${id}', 4)"></i>
-        <i class="fa-solid fa-ferry ${(method == 5 ? "active" : "")}" onclick="selectMethod('${id}', 5)"></i>
-        <i class="fa-solid fa-plane ${(method == 6 ? "active" : "")}" onclick="selectMethod('${id}', 6)"></i>
+        <i class="fa-solid fa-train ${(method == 3 ? "active" : "")}" onclick="selectMethod('${id}', 3)"></i>
+        <i class="fa-solid fa-plane ${(method == 4 ? "active" : "")}" onclick="selectMethod('${id}', 4)"></i>
         <div class="vr"></div>
-        <i class="fa-brands fa-uber ${(method == 7 ? "active" : "")}" onclick="selectMethod('${id}', 7)"></i>
-        <i class="fa-brands fa-lyft ${(method == 8 ? "active" : "")}" onclick="selectMethod('${id}', 8)"></i>
+        <i class="fa-brands fa-uber ${(method == 5 ? "active" : "")}" onclick="selectMethod('${id}', 5)"></i>
+        <i class="fa-brands fa-lyft ${(method == 6 ? "active" : "")}" onclick="selectMethod('${id}', 6)"></i>
         <span class="point">&rarr;</span>
 
     </div>
@@ -327,15 +368,6 @@ function rerender() {
 </h1>
         `;
     }
-}
-
-function escapeHtml(unsafe) {
-    return unsafe
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
 }
 
 rerender();
