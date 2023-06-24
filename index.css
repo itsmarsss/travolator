@@ -150,7 +150,7 @@ section {
     max-width: 1000px;
     min-width: 200px;
     padding: 10px;
-    height: 400px;
+    height: 690px;
     background: #fafafa;
     margin: auto;
     border-radius: 25px;
@@ -303,6 +303,7 @@ section {
     border: #000 1px dashed;
     padding: 10px;
     margin-bottom: 10px;
+    border-radius: 10px;
     transition: 200ms;
 }
 
@@ -326,6 +327,11 @@ section {
 
 .point {
     transition: 200ms;
+    cursor: default;
+}
+
+.point:hover {
+    transform: rotate(90deg);
 }
 
 .infos {
@@ -480,10 +486,6 @@ footer>* {
 
     nav {
         transform: translateY(-45px);
-    }
-
-    .point {
-        transform: rotate(90deg);
     }
 }
 
