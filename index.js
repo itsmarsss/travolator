@@ -1,6 +1,5 @@
 const from_location_input = document.getElementById("from");
 const to_location_input = document.getElementById("to");
-const location_name_input = document.getElementById("search_name");
 const location_input = document.getElementById("new-stop");
 
 const autocomplete = document.getElementById("autocomplete");
@@ -163,13 +162,6 @@ location_input.addEventListener("keyup", function (e) {
         handleIn(location_input);
     }
 });
-location_name_input.addEventListener("keyup", function (e) {
-    const inputValue = e.key;
-
-    if (/^[a-zA-Z]$/.test(inputValue)) {
-        handleIn(location_input);
-    }
-});
 
 from_location_input.addEventListener("focusout", function () {
     hideComplete();
@@ -208,7 +200,7 @@ function handleIn(element) {
                 console.log(result.features[i]);
 
                 const insert = `
-                <span data-addr="${result.features[i].properties.address_line2}" class="complete"><b>${result.features[i].properties.address_line1}</b>, ${result.features[i].properties.address_line2}</span>
+                <span data-addr="${result.features[i].properties.address_line1 + ", " + result.features[i].properties.address_line2}" class="complete"><b>${result.features[i].properties.address_line1}</b>, ${result.features[i].properties.address_line2}</span>
                 `;
 
                 autocomplete.innerHTML += insert;
