@@ -17,6 +17,7 @@ function openSettings() {
 
 function closeSettings() {
     settings.style.display = "none";
+    setCookie("apikey", key.value, 5);
 }
 
 async function queryAI() {
@@ -414,7 +415,17 @@ function rerender() {
     }
 }
 
+key.value = getCookie("apikey");
+
 rerender();
+
+key.addEventListener("mouseenter", function () {
+    key.type = "text";
+});
+
+key.addEventListener("mouseleave", function () {
+    key.type = "password";
+});
 
 from_location_input.addEventListener("keyup", function (e) {
     const inputValue = e.key;
@@ -520,3 +531,23 @@ function array_move(arr, old_index, new_index) {
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
     return arr;
 };
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
