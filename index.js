@@ -494,6 +494,10 @@ function handleIn(element) {
                 autocomplete.innerHTML += insert;
             }
 
+            if (autocomplete.innerHTML.length == 0) {
+                autocomplete.innerHTML = `<p style="font-family: 'Poppins'">&emsp;No results.</p>`;
+            }
+
             const spans = document.getElementsByClassName("complete");
 
             for (var i = 0; i < spans.length; i++) {

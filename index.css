@@ -506,6 +506,8 @@ footer>* {
     padding: 25px;
     width: 500px;
     height: 40px;
+    border: #000 1px solid;
+    box-shadow: #959da533 0px 8px 24px;
 }
 
 #settings>h3 {
@@ -604,5 +606,16 @@ footer>* {
     .trip-info {
         flex-direction: column;
         gap: 5px;
+    }
+
+    #settings {
+        flex-direction: column;
+        gap: 10px;
+        width: 300px;
+        height: 150px;
+    }
+
+    #settings>h3 {
+        width: 100%;
     }
 }
