@@ -22,6 +22,8 @@ function closeSettings() {
 
 async function queryAI() {
 
+    locations = [];
+
     const parsed_from = from_location_input.value.split(/,(.*)/s);
     const parsed_to = to_location_input.value.split(/,(.*)/s);
 
@@ -47,8 +49,6 @@ async function queryAI() {
     <h3 style="font-family: 'Poppins';">Loading...</h3>
 </div>
     `;
-
-    locations = [];
 
     var url = "https://api.openai.com/v1/completions";
     var bearer = "Bearer " + key.value;
