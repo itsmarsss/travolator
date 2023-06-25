@@ -481,6 +481,7 @@ footer>* {
 }
 
 #autocomplete>span {
+    font-family: "Poppins";
     overflow: hidden;
     white-space: nowrap;
     padding: 5px;
@@ -491,6 +492,30 @@ footer>* {
     background: #ddd;
     cursor: pointer;
     padding-left: 10px;
+}
+
+#settings {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    background: #f0f0f0;
+    border-radius: 20px;
+    padding: 25px;
+    width: 500px;
+}
+
+#settings>h3 {
+    font-family: "Poppins";
+    width: 50%;
+    margin: auto;
+}
+
+#settings>i {
+    margin: auto;
+    padding-left: 20px;
 }
 
 @media only screen and (max-width: 1040px) {

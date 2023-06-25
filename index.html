@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="assets/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travolator | Home</title>
+    <title>Travolator | Plan Your Vacation</title>
 </head>
 
 <body>
@@ -34,8 +34,8 @@
     <div id="topper">
         <h1 class="title">Planned Stops:</h1>
         <div id="configuration">
-            <button><i class="fas fa-cog"></i></button>
-            <button><i class="fa-solid fa-trash-can"></i></button>
+            <button onclick="openSettings()" title="Settings"><i class="fas fa-cog"></i></button>
+            <button onclick="removeAll()" title="Reset"><i class="fa-solid fa-trash-can"></i></button>
         </div>
     </div>
     <section>
@@ -44,7 +44,7 @@
         </div>
         <div id="manual">
             <input id="new-stop" placeholder="Add new stop... (Name, Address, Additional Information)" type="text">
-            <button onclick="add()">&plus;</button>
+            <button onclick="add()" title="Add new stop">&plus;</button>
         </div>
     </section>
     <footer>
@@ -57,6 +57,12 @@
     </footer>
 
     <div id="autocomplete"></div>
+
+    <div id="settings">
+        <h3>OpenAI API Key:</h3>
+        <input type="password" id="key">
+        <i onclick="closeSettings()" class="fa-solid fa-x"></i>
+    </div>
 </body>
 
 <tail>

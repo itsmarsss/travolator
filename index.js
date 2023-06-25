@@ -6,7 +6,18 @@ const autocomplete = document.getElementById("autocomplete");
 
 const location_list = document.getElementById("stops");
 
+const settings = document.getElementById("settings");
+const key = document.getElementById("key");
+
 var locations = [];
+
+function openSettings() {
+    settings.style.display = "flex";
+}
+
+function closeSettings() {
+    settings.style.display = "none";
+}
 
 async function queryAI() {
 
@@ -39,7 +50,7 @@ async function queryAI() {
     locations = [];
 
     var url = "https://api.openai.com/v1/completions";
-    var bearer = 'Bearer';
+    var bearer = "Bearer " + key.value;
     fetch(url, {
         method: 'POST',
         headers: {
@@ -217,6 +228,12 @@ function getIndex(id) {
             return i;
         }
     }
+}
+
+function removeAll() {
+    locations = [];
+
+    rerender();
 }
 
 function remove(id) {
