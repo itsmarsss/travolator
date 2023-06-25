@@ -136,19 +136,40 @@ nav {
     align-self: end;
 }
 
-.title {
-    width: 85%;
-    font-family: "Poppins";
-    font-size: 20px;
-    font-weight: bold;
-    color: #323232;
+#topper {
+    width: 90%;
+    max-width: 1500px;
+    min-width: 200px;
     margin: auto;
     transform: translateY(-50px);
+    display: flex;
+    align-content: space-between;
+}
+
+.title {
+    font-family: "Poppins";
+    font-weight: bold;
+    color: #212121;
+    width: calc(100% - 100px);
+}
+
+#configuration {
+    display: flex;
+    width: 100px;
+    padding-bottom: 10px;
+}
+
+#configuration>button {
+    width: 45px;
+}
+
+#configuration>button>i:hover {
+    transform: translateY(0);
 }
 
 section {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1500px;
     min-width: 200px;
     padding: 10px;
     height: 690px;
