@@ -26,6 +26,7 @@ p {
 a {
     text-decoration: underline;
     cursor: pointer;
+    color: #212121;
 }
 
 a:hover {
