@@ -16,7 +16,7 @@ These Terms of Service ("Terms") govern your use of the Travolator website (the 
 - **License:** We grant you a limited, non-exclusive, non-transferable license to use the Service for its intended purpose. This license does not permit you to modify, distribute, or create derivative works of the Service.
 
 # Privacy
-Your privacy is important to us. Please review our Privacy Policy [https://github.com/itsmarsss/Travolator/blob/main/PRIVACY.md] to understand how we collect, use, and protect your personal information.
+Your privacy is important to us. Please review our Privacy Policy [https://github.com/itsmarsss/Travolator/blob/main/legal/PRIVACY.md] to understand how we collect, use, and protect your personal information.
 
 ## Disclaimer of Warranties
 THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE. YOU USE THE SERVICE AT YOUR OWN RISK.

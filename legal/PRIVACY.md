@@ -15,6 +15,9 @@ Travolator may contain links or integrations with third-party services, such as 
 ## Data Security
 We take appropriate security measures to protect your OpenAI key and ensure the security of your information. However, please be aware that no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.
 
+## Terms of Service
+Your understanding of our Terms of Service is crucial for a seamless experience. Please take a moment to review our Terms of Service at [https://github.com/itsmarsss/Travolator/blob/main/legal/TERMS.md]. These terms outline the guidelines and agreements that govern the use of our services. By accessing or using our services, you agree to be bound by these terms.
+
 ## Changes to this Privacy Policy
 We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page, and the "Last Updated" date at the bottom of the policy will be revised accordingly. We encourage you to review this Privacy Policy periodically for any changes.
 
