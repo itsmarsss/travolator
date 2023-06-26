@@ -33,4 +33,4 @@ We may terminate or suspend your access to the Service without prior notice or l
 Governing Law
 These Terms shall be governed by and construed in accordance with the laws of the United States of America, without regard to its conflict of laws principles.
 
-> Last Updated: `06/30/2023`
+> Last Updated: `06/25/2023`

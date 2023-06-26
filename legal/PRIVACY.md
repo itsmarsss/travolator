@@ -21,4 +21,4 @@ Your understanding of our Terms of Service is crucial for a seamless experience.
 ## Changes to this Privacy Policy
 We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page, and the "Last Updated" date at the bottom of the policy will be revised accordingly. We encourage you to review this Privacy Policy periodically for any changes.
 
-> Last Updated: `06/30/2023`
+> Last Updated: `06/25/2023`
