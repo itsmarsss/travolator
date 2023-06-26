@@ -1,4 +1,4 @@
-# Privacy and Terms of Service
+# Privacy Policy and Terms of Service
 Your privacy and the terms of service are important to us. Please review the following sections:
 
 ## Privacy Policy
