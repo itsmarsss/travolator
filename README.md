@@ -7,7 +7,7 @@ I Want Internet
 
 # Travolator
 
-Travolator is a web application that leverages ChatGPT to generate personalized travel itineraries and tourist attractions between two given points. With Travolator, you have the flexibility to edit the order of attractions, delete them entirely, and even add your own locations. You can plan your departure and arrival times for each location, along with the estimated fees and time spent at each destination. 
+Travolator is a web application that leverages ChatGPT to generate unique travel itineraries and tourist attractions between two given points. With Travolator, you have the flexibility to edit the order of attractions, delete them entirely, and even add your own locations. You can plan your departure and arrival times for each location, along with the estimated fees and time spent at each destination. 
 
 ## Usage
 
