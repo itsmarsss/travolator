@@ -4,7 +4,7 @@ This Privacy Policy describes how Travolator ("we" or "us") collects and uses yo
 ## Information We Collect
 We DO NOT collect any personal information from you when you use Travolator. The only information we collect is your OpenAI key, which is stored locally as a cookie on your device for a period of 5 days. This cookie allows us to authenticate your access to the OpenAI API.
 
-## We DO NOT have a backend or server infrastructure that receives or stores any user requests or personal information. Your OpenAI key is used solely for the purpose of accessing the OpenAI API and generating the travel itineraries. It is not stored or transmitted to any external servers.
+We DO NOT have a backend or server infrastructure that receives or stores any user requests or personal information. Your OpenAI key is used solely for the purpose of accessing the OpenAI API and generating the travel itineraries. It is not stored or transmitted to any external servers.
 
 ## Use of OpenAI Key
 Your OpenAI key is securely stored as a cookie on your device and is used exclusively for the purpose of generating travel itineraries using the ChatGPT model. The key is never transmitted to our servers or shared with any third parties. It remains on your device and is automatically deleted after 5 days.
